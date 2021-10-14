@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WritingMethods_Simulator.SmallMemory
 {
-    class GeneralRegisters
+    class GeneralRegistersSet
     {
     }
 }
