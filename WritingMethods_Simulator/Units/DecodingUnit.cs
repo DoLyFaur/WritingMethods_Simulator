@@ -8,5 +8,12 @@ namespace WritingMethods_Simulator.Units
 {
     class DecodingUnit
     {
+        public void Dispatch(Instruction instruction)
+        {
+            switch(instruction.opcode)
+            {
+                //case 'B':
+            }
+        }
     }
 }

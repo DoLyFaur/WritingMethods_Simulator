@@ -11,6 +11,8 @@ namespace WritingMethods_Simulator
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+
+        public static int cycles=0;
         [STAThread]
         static void Main()
         {
