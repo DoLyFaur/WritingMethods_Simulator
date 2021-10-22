@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace WritingMethods_Simulator.Units
 {
-    class ExecutionUnit
+    class ArithmeticLogicUnit : ExecutionUnit
     {
-        public Instruction instruction = null;
     }
 }

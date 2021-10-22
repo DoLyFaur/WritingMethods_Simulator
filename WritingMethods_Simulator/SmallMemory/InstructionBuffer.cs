@@ -10,6 +10,7 @@ namespace WritingMethods_Simulator.SmallMemory
     class InstructionBuffer:Queue<Instruction>
     {
         int size;
+        int lastBranchTarget = 0;
 
         public InstructionBuffer(int size)
         {
@@ -24,7 +25,7 @@ namespace WritingMethods_Simulator.SmallMemory
         public void Read(int quantity, BinaryReader reader)
         {
             for (int i = 0; i < quantity; i++)
-                if (this.Count() < size)
+                if (this.Count() < size && reader.BaseStream.Position != reader.BaseStream.Length)
                     this.Enqueue(GetNextInstruction(reader));
         }
 
@@ -32,6 +33,14 @@ namespace WritingMethods_Simulator.SmallMemory
         {
             Instruction instruction = this.Peek();
             this.Dequeue();
+            if (lastBranchTarget != 0)
+            {
+                Program.cycles += instruction.PC_crt - lastBranchTarget;
+                Program.instructions += instruction.PC_crt - lastBranchTarget;
+                lastBranchTarget = 0;
+            }
+            if (instruction.opcode == 'B')
+                lastBranchTarget = instruction.date_instr;
             return instruction;
         }
     }
