@@ -10,7 +10,7 @@ namespace WritingMethods_Simulator.SmallMemory
     class InstructionBuffer:Queue<Instruction>
     {
         int size;
-        int lastBranchTarget = 0;
+        int lastTarget = 0;
 
         public InstructionBuffer(int size)
         {
@@ -33,14 +33,9 @@ namespace WritingMethods_Simulator.SmallMemory
         {
             Instruction instruction = this.Peek();
             this.Dequeue();
-            if (lastBranchTarget != 0)
-            {
-                Program.cycles += instruction.PC_crt - lastBranchTarget;
-                Program.instructions += instruction.PC_crt - lastBranchTarget;
-                lastBranchTarget = 0;
-            }
-            if (instruction.opcode == 'B')
-                lastBranchTarget = instruction.date_instr;
+            Program.cycles += instruction.PC_crt - lastTarget;
+            Program.instructions += instruction.PC_crt - lastTarget;
+            lastTarget = instruction.date_instr;
             return instruction;
         }
     }

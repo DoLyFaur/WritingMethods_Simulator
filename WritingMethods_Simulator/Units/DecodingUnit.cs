@@ -11,7 +11,7 @@ namespace WritingMethods_Simulator.Units
         public bool occupied = false;
         public void Decode(Instruction instruction)
         {
-            Program.instructions++;
+            //Program.instructions++;
             Dispatch(instruction);
         }
 

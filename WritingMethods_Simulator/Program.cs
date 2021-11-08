@@ -37,7 +37,7 @@ namespace WritingMethods_Simulator
             BinaryReader binary_reader = new BinaryReader(File.Open("@", FileMode.Open));
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
-                cycles++;
+                //cycles++;
                 instructionBuffer.Read(FR,binary_reader);
                 for (int i = 0; i < FR; i++)
                 {
