@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WritingMethods_Simulator.Units
 {
-    class DecodingUnit
+    public class DecodingUnit
     {
         public bool occupied = false;
         public void Decode(Instruction instruction)
@@ -24,12 +24,12 @@ namespace WritingMethods_Simulator.Units
                     {
                         while(dispatched==0)
                         {
-                            Program.cycles++;
-                            for (int i = 0; i < Program.IR; i++)
+                            Form1.cycles++;
+                            for (int i = 0; i < Form1.IR; i++)
                             {
-                                if (Program.ALU[i].instruction == null)
+                                if (Form1.ALU[i].instruction == null)
                                 {
-                                    Program.ALU[i].instruction = instruction;
+                                    Form1.ALU[i].instruction = instruction;
                                     dispatched = 1;
                                     break;
                                 }
@@ -42,12 +42,12 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            Program.cycles++;
-                            for (int i = 0; i < Program.IR; i++)
+                            Form1.cycles++;
+                            for (int i = 0; i < Form1.IR; i++)
                             {
-                                if (Program.ST[i].instruction == null)
+                                if (Form1.ST[i].instruction == null)
                                 {
-                                    Program.ST[i].instruction = instruction;
+                                    Form1.ST[i].instruction = instruction;
                                     dispatched = 1;
                                     break;
                                 }
@@ -60,12 +60,12 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            Program.cycles++;
-                            for (int i = 0; i < Program.IR; i++)
+                            Form1.cycles++;
+                            for (int i = 0; i < Form1.IR; i++)
                             {
-                                if (Program.LD[i].instruction == null)
+                                if (Form1.LD[i].instruction == null)
                                 {
-                                    Program.LD[i].instruction = instruction;
+                                    Form1.LD[i].instruction = instruction;
                                     dispatched = 1;
                                     break;
                                 }

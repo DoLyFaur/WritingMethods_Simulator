@@ -33,8 +33,8 @@ namespace WritingMethods_Simulator.SmallMemory
         {
             Instruction instruction = this.Peek();
             this.Dequeue();
-            Program.cycles += instruction.PC_crt - lastTarget;
-            Program.instructions += instruction.PC_crt - lastTarget;
+            Form1.cycles += instruction.PC_crt - lastTarget;
+            Form1.instructions += instruction.PC_crt - lastTarget;
             lastTarget = instruction.date_instr;
             return instruction;
         }

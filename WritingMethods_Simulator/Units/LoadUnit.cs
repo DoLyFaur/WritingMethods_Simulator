@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WritingMethods_Simulator.Units
 {
-    class LoadUnit : ExecutionUnit
+    public class LoadUnit : ExecutionUnit
     {
     }
 }

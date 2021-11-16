@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WritingMethods_Simulator.Units
 {
-    class ExecutionUnit
+    public class ExecutionUnit
     {
         public Instruction instruction = null;
     }
