@@ -8,7 +8,13 @@ namespace WritingMethods_Simulator.Units
 {
     public class DecodingUnit
     {
-        public bool occupied = false;
+        public bool occupied;
+
+        public DecodingUnit()
+        {
+            this.occupied = false;
+        }
+
         public void Decode(Instruction instruction)
         {
             //Program.instructions++;

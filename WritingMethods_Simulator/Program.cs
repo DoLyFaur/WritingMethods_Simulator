@@ -15,8 +15,8 @@ namespace WritingMethods_Simulator
         /// The main entry point for the application.
         /// </summary>
 
-        public static int cycles = 0;
-        public static int instructions = 0;
+        public static int cycles;
+        public static int instructions;
         public static int IR;
         public static int IBS;
         public static int FR;
@@ -29,6 +29,9 @@ namespace WritingMethods_Simulator
         [STAThread]
         static void Main()
         {
+            cycles = 0;
+            instructions = 0;
+
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -41,23 +44,35 @@ namespace WritingMethods_Simulator
             IBS = ibs;
             FR = fr;
             DEC = new DecodingUnit[FR];
+            for (int i = 0; i < FR; i++)
+            {
+                DEC[i] = new DecodingUnit();
+            }
             ALU = new ArithmeticLogicUnit[IR];
             BR = new BranchUnit[IR];
             ST = new StoreUnit[IR];
             LD = new LoadUnit[IR];
+            for (int i = 0; i < IR; i++)
+            {
+                ALU[i] = new ArithmeticLogicUnit();
+                BR[i] = new BranchUnit();
+                ST[i] = new StoreUnit();
+                LD[i] = new LoadUnit();
+            }
 
             InstructionBuffer instructionBuffer = new InstructionBuffer(IBS);
-            BinaryReader binary_reader = new BinaryReader(File.Open("@", FileMode.Open));
+            BinaryReader binary_reader = new BinaryReader(File.Open("FTREE.TRC", FileMode.Open));
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
                 //cycles++;
                 instructionBuffer.Read(FR, binary_reader);
                 for (int i = 0; i < FR; i++)
                 {
-                    if (!DEC[i].occupied)
+                    if (!DEC[i].occupied && instructionBuffer.Count!=0)
                     {
-                        DEC[i].occupied = true;
-                        DEC[i].Decode(instructionBuffer.Take());
+                        /*DEC[i].occupied = true;
+                        DEC[i].Decode(instructionBuffer.Take());*/
+                        instructionBuffer.Take();
                     }
                 }
             }

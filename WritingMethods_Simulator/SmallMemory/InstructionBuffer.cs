@@ -19,7 +19,34 @@ namespace WritingMethods_Simulator.SmallMemory
 
         public Instruction GetNextInstruction(BinaryReader reader)
         {
-            return new Instruction(reader.ReadChar(), reader.ReadInt32(), reader.ReadInt32());
+            char c = reader.ReadChar();
+            while(c==' ' || c=='\n')
+            {
+                c = reader.ReadChar();
+            }
+
+            string pc = "", di="";
+            char ch;
+            reader.ReadChar();
+            ch = reader.ReadChar();
+            do
+            {           
+                pc += ch;
+                ch = reader.ReadChar();
+            } while (ch != ' ');
+            
+            ch = reader.ReadChar();
+            while (ch == ' ')
+            {
+                ch = reader.ReadChar();
+            }
+            do
+            {
+                di += ch;
+                ch = reader.ReadChar();
+            } while (ch != ' ');
+
+            return new Instruction(c, Int32.Parse(pc), Int32.Parse(di));
         }
 
         public void Read(int quantity, BinaryReader reader)
@@ -35,7 +62,10 @@ namespace WritingMethods_Simulator.SmallMemory
             this.Dequeue();
             Program.cycles += instruction.PC_crt - lastTarget;
             Program.instructions += instruction.PC_crt - lastTarget;
-            lastTarget = instruction.date_instr;
+            if (instruction.opcode == 'B')
+                lastTarget = instruction.date_instr;
+            else
+                lastTarget = instruction.PC_crt + 1;
             return instruction;
         }
     }
