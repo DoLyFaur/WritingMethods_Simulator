@@ -24,12 +24,12 @@ namespace WritingMethods_Simulator.Units
                     {
                         while(dispatched==0)
                         {
-                            Form1.cycles++;
-                            for (int i = 0; i < Form1.IR; i++)
+                            Program.cycles++;
+                            for (int i = 0; i < Program.IR; i++)
                             {
-                                if (Form1.ALU[i].instruction == null)
+                                if (Program.ALU[i].instruction == null)
                                 {
-                                    Form1.ALU[i].instruction = instruction;
+                                    Program.ALU[i].instruction = instruction;
                                     dispatched = 1;
                                     break;
                                 }
@@ -42,12 +42,12 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            Form1.cycles++;
-                            for (int i = 0; i < Form1.IR; i++)
+                            Program.cycles++;
+                            for (int i = 0; i < Program.IR; i++)
                             {
-                                if (Form1.ST[i].instruction == null)
+                                if (Program.ST[i].instruction == null)
                                 {
-                                    Form1.ST[i].instruction = instruction;
+                                    Program.ST[i].instruction = instruction;
                                     dispatched = 1;
                                     break;
                                 }
@@ -60,12 +60,12 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            Form1.cycles++;
-                            for (int i = 0; i < Form1.IR; i++)
+                            Program.cycles++;
+                            for (int i = 0; i < Program.IR; i++)
                             {
-                                if (Form1.LD[i].instruction == null)
+                                if (Program.LD[i].instruction == null)
                                 {
-                                    Form1.LD[i].instruction = instruction;
+                                    Program.LD[i].instruction = instruction;
                                     dispatched = 1;
                                     break;
                                 }

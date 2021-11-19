@@ -15,8 +15,16 @@ namespace WritingMethods_Simulator
         /// The main entry point for the application.
         /// </summary>
 
-        
-        //static ComboBox ir = Application.OpenForms["Form1"].Controls["IRcombobox"] as ComboBox;
+        public static int cycles = 0;
+        public static int instructions = 0;
+        public static int IR;
+        public static int IBS;
+        public static int FR;
+        public static DecodingUnit[] DEC;
+        public static ArithmeticLogicUnit[] ALU;
+        public static BranchUnit[] BR;
+        public static StoreUnit[] ST;
+        public static LoadUnit[] LD;
 
         [STAThread]
         static void Main()
@@ -25,6 +33,34 @@ namespace WritingMethods_Simulator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+        }
+
+        static public void Simulate(int ir, int ibs, int fr)
+        {
+            IR=ir;
+            IBS = ibs;
+            FR = fr;
+            DEC = new DecodingUnit[FR];
+            ALU = new ArithmeticLogicUnit[IR];
+            BR = new BranchUnit[IR];
+            ST = new StoreUnit[IR];
+            LD = new LoadUnit[IR];
+
+            InstructionBuffer instructionBuffer = new InstructionBuffer(IBS);
+            BinaryReader binary_reader = new BinaryReader(File.Open("@", FileMode.Open));
+            while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
+            {
+                //cycles++;
+                instructionBuffer.Read(FR, binary_reader);
+                for (int i = 0; i < FR; i++)
+                {
+                    if (!DEC[i].occupied)
+                    {
+                        DEC[i].occupied = true;
+                        DEC[i].Decode(instructionBuffer.Take());
+                    }
+                }
+            }
         }
     }
 }
