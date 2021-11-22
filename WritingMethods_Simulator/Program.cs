@@ -62,6 +62,7 @@ namespace WritingMethods_Simulator
 
             InstructionBuffer instructionBuffer = new InstructionBuffer(IBS);
             BinaryReader binary_reader = new BinaryReader(File.Open("FTREE.TRC", FileMode.Open));
+            int ind = 1;
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
                 //cycles++;
@@ -72,10 +73,18 @@ namespace WritingMethods_Simulator
                     {
                         /*DEC[i].occupied = true;
                         DEC[i].Decode(instructionBuffer.Take());*/
-                        instructionBuffer.Take();
+                        Instruction instruction = instructionBuffer.Take();
+                        if (instruction == null)
+                        {
+                            ind = 0;
+                            continue;
+                        }
                     }
                 }
             }
+            if (ind == 1)
+                instructions++;
+            Console.WriteLine(instructions);
         }
     }
 }

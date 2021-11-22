@@ -22,7 +22,10 @@ namespace WritingMethods_Simulator.SmallMemory
             char c = reader.ReadChar();
             while(c==' ' || c=='\n')
             {
-                c = reader.ReadChar();
+                if (reader.BaseStream.Position != reader.BaseStream.Length)
+                    c = reader.ReadChar();
+                else
+                    return null;
             }
 
             string pc = "", di="";
@@ -40,11 +43,12 @@ namespace WritingMethods_Simulator.SmallMemory
             {
                 ch = reader.ReadChar();
             }
-            do
+            while (ch != ' ' && reader.BaseStream.Position != reader.BaseStream.Length)
             {
                 di += ch;
                 ch = reader.ReadChar();
-            } while (ch != ' ');
+            }
+            di += ch;
 
             return new Instruction(c, Int32.Parse(pc), Int32.Parse(di));
         }
@@ -60,8 +64,10 @@ namespace WritingMethods_Simulator.SmallMemory
         {
             Instruction instruction = this.Peek();
             this.Dequeue();
-            Program.cycles += instruction.PC_crt - lastTarget;
-            Program.instructions += instruction.PC_crt - lastTarget;
+            if (instruction == null)
+                return null;
+            Program.cycles += instruction.PC_crt - lastTarget + 1;
+            Program.instructions += instruction.PC_crt - lastTarget + 1;
             if (instruction.opcode == 'B')
                 lastTarget = instruction.date_instr;
             else
