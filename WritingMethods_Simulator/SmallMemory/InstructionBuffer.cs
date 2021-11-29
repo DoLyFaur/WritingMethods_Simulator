@@ -11,7 +11,10 @@ namespace WritingMethods_Simulator.SmallMemory
     {
         int size;
         int lastTarget = 0;
-
+        int ALUInstrToSend = 0;
+        int neededALU = 0;
+        Instruction instructionToSave;
+        int PC_crt = 0;
         public InstructionBuffer(int size)
         {
             this.size = size;
@@ -60,19 +63,47 @@ namespace WritingMethods_Simulator.SmallMemory
                     this.Enqueue(GetNextInstruction(reader));
         }
 
+        Instruction ALUInstruction()
+        {
+            PC_crt++;
+            ALUInstrToSend--;
+            Program.instructions++;
+            lastTarget = PC_crt + 1;
+            return new Instruction('A', PC_crt, lastTarget);
+        }
+
         public Instruction Take()
         {
-            Instruction instruction = this.Peek();
-            this.Dequeue();
-            if (instruction == null)
-                return null;
-            Program.cycles += instruction.PC_crt - lastTarget + 1;
-            Program.instructions += instruction.PC_crt - lastTarget + 1;
-            if (instruction.opcode == 'B')
-                lastTarget = instruction.date_instr;
+            if (ALUInstrToSend == 0) 
+            {
+                Instruction instruction = this.Peek();
+                if (instruction.PC_crt - lastTarget > 0)
+                {
+                    PC_crt = lastTarget - 1;
+                    //instructionToSave = instruction;
+                    ALUInstrToSend = instruction.PC_crt - lastTarget;
+                    return ALUInstruction();
+                }
+                else
+                {
+                    this.Dequeue();
+                    PC_crt = instruction.PC_crt;
+                    Program.instructions++;
+                    if (instruction == null)
+                        return null;
+                    if (instruction.opcode == 'B')
+                        lastTarget = instruction.date_instr;
+                    else
+                        lastTarget = instruction.PC_crt + 1;
+                    return instruction;
+                }
+            }
             else
-                lastTarget = instruction.PC_crt + 1;
-            return instruction;
+            {
+                return ALUInstruction();
+            }
+            //Program.cycles += instruction.PC_crt - lastTarget + 1;
+            
         }
     }
 }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WritingMethods_Simulator.BigMemory;
 using WritingMethods_Simulator.SmallMemory;
 using WritingMethods_Simulator.Units;
 
@@ -38,9 +39,12 @@ namespace WritingMethods_Simulator
             Application.Run(new Form1());
         }
 
-        static public void Simulate(int ir, int ibs, int fr)
+        static public void Simulate(int ir, int ibs, int fr, int sizeIC, int sizeDC)
         {
-            IR=ir;
+            InstructionCache instructionCache = new InstructionCache(sizeIC);
+            DataCache dataCache = new DataCache(sizeDC);
+
+            IR = ir;
             IBS = ibs;
             FR = fr;
             DEC = new DecodingUnit[FR];
@@ -48,20 +52,14 @@ namespace WritingMethods_Simulator
             {
                 DEC[i] = new DecodingUnit();
             }
-            ALU = new ArithmeticLogicUnit[IR];
-            BR = new BranchUnit[IR];
-            ST = new StoreUnit[IR];
-            LD = new LoadUnit[IR];
-            for (int i = 0; i < IR; i++)
-            {
-                ALU[i] = new ArithmeticLogicUnit();
-                BR[i] = new BranchUnit();
-                ST[i] = new StoreUnit();
-                LD[i] = new LoadUnit();
-            }
+            //DecodingUnit[] DEC = new DecodingUnit[FR];
+            ArithmeticLogicUnit[] ALU = new ArithmeticLogicUnit[IR];
+            BranchUnit[] BR = new BranchUnit[IR];
+            StoreUnit[] ST = new StoreUnit[IR];
+            LoadUnit[] LD = new LoadUnit[IR];
 
             InstructionBuffer instructionBuffer = new InstructionBuffer(IBS);
-            BinaryReader binary_reader = new BinaryReader(File.Open("FTREE.TRC", FileMode.Open));
+            BinaryReader binary_reader = new BinaryReader(File.Open("FTOWER.TRC", FileMode.Open));
             int ind = 1;
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
@@ -71,14 +69,15 @@ namespace WritingMethods_Simulator
                 {
                     if (!DEC[i].occupied && instructionBuffer.Count!=0)
                     {
-                        /*DEC[i].occupied = true;
-                        DEC[i].Decode(instructionBuffer.Take());*/
+                        //DEC[i].occupied = true;
+                        //DEC[i].Decode(instructionBuffer.Take());*/
                         Instruction instruction = instructionBuffer.Take();
                         if (instruction == null)
                         {
                             ind = 0;
                             continue;
                         }
+                        //DEC[i].Decode(instruction);
                     }
                 }
             }

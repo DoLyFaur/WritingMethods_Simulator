@@ -26,9 +26,9 @@ namespace WritingMethods_Simulator.Units
             int dispatched = 0;
             switch(instruction.opcode)
             {
-                case 'B':
+                case 'A':
                     {
-                        while(dispatched==0)
+                        while (dispatched == 0)
                         {
                             Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
@@ -36,6 +36,24 @@ namespace WritingMethods_Simulator.Units
                                 if (Program.ALU[i].instruction == null)
                                 {
                                     Program.ALU[i].instruction = instruction;
+                                    dispatched = 1;
+                                    break;
+                                }
+                            }
+                        }
+                        occupied = false;
+                        break;
+                    }
+                case 'B':
+                    {
+                        while(dispatched==0)
+                        {
+                            Program.cycles++;
+                            for (int i = 0; i < Program.IR; i++)
+                            {
+                                if (Program.BR[i].instruction == null)
+                                {
+                                    Program.BR[i].instruction = instruction;
                                     dispatched = 1;
                                     break;
                                 }

@@ -8,5 +8,20 @@ namespace WritingMethods_Simulator.BigMemory
 {
     class InstructionCache
     {
+        private static int sizeIC;
+        public struct InstructionStruct
+        {
+            Instruction instruction;
+            int tagC;
+            bool V;
+            bool D;
+        }
+
+        InstructionStruct[] DataStructs = new InstructionStruct[sizeIC];
+
+        public InstructionCache(int size_IC)
+        {
+            sizeIC = size_IC;
+        }
     }
 }
