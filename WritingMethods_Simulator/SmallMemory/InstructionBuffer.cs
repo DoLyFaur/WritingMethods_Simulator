@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WritingMethods_Simulator.BigMemory;
 
 namespace WritingMethods_Simulator.SmallMemory
 {
@@ -77,6 +78,7 @@ namespace WritingMethods_Simulator.SmallMemory
             if (ALUInstrToSend == 0) 
             {
                 Instruction instruction = this.Peek();
+                InstructionCache.Add(instruction);
                 if (instruction.PC_crt - lastTarget > 0)
                 {
                     PC_crt = lastTarget - 1;

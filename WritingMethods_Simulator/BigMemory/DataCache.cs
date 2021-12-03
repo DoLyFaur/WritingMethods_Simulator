@@ -8,7 +8,7 @@ namespace WritingMethods_Simulator.BigMemory
 {
     class DataCache
     {
-        private static int sizeDC;
+        public static int sizeDC;
         public struct DataStruct
         {
             public int data;
@@ -17,7 +17,7 @@ namespace WritingMethods_Simulator.BigMemory
             public bool D;
         }
 
-        DataStruct[] DataStructs = new DataStruct[sizeDC];
+        public static DataStruct[] DataStructs = new DataStruct[sizeDC];
 
         public DataCache(int size_DC)
         {
@@ -28,6 +28,16 @@ namespace WritingMethods_Simulator.BigMemory
                 DataStructs[i].V = false;
                 DataStructs[i].D = false;
             }
+        }
+
+        internal static void Add(int data)
+        {
+            int tag = data / sizeDC;
+            int blOff = data % sizeDC;
+            DataStructs[blOff].tagC = tag;
+            DataStructs[blOff].data = data;
+            DataStructs[blOff].V = true;
+            DataStructs[blOff].D = true;
         }
     }
 }

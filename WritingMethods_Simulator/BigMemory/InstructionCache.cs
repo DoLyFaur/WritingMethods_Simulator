@@ -8,7 +8,7 @@ namespace WritingMethods_Simulator.BigMemory
 {
     class InstructionCache
     {
-        private static int sizeIC;
+        public static int sizeIC;
         public struct InstructionStruct
         {
             public Instruction instruction;
@@ -16,16 +16,25 @@ namespace WritingMethods_Simulator.BigMemory
             public bool V;
         }
 
-        InstructionStruct[] DataStructs = new InstructionStruct[sizeIC];
+        public static InstructionStruct[] InstructionStructs = new InstructionStruct[sizeIC];
 
         public InstructionCache(int size_IC)
         {
             sizeIC = size_IC;
             for (int i = 0; i < sizeIC; i++)
             {
-                DataStructs[i] = new InstructionStruct();
-                DataStructs[i].V = false;
+                InstructionStructs[i] = new InstructionStruct();
+                InstructionStructs[i].V = false;
             }
+        }
+
+        internal static void Add(Instruction instruction)
+        {
+            int tag = instruction.PC_crt / sizeIC;
+            int blOff = instruction.PC_crt % sizeIC;
+            InstructionStructs[blOff].tagC = tag;
+            InstructionStructs[blOff].instruction = instruction;
+            InstructionStructs[blOff].V = true;
         }
     }
 }

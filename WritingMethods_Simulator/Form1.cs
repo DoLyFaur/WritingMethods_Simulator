@@ -73,8 +73,8 @@ namespace WritingMethods_Simulator
             int sizeIC = Int32.Parse(SizeICcombobox.Text);
             int sizeDC = Int32.Parse(SizeDCcombobox.Text);
             string strategy = Strategycombobox.Text;
-            int MMlatency = Int32.Parse(MMcombobox.Text);
-            Program.Simulate(IR, IBS, FR, sizeIC, sizeDC, MMlatency, strategy);
+            int MMLatency = Int32.Parse(MMcombobox.Text);
+            Program.Simulate(IR, IBS, FR, sizeIC, sizeDC, MMLatency, strategy);
         }
     }
 }

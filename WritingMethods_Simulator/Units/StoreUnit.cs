@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WritingMethods_Simulator.BigMemory;
 
 namespace WritingMethods_Simulator.Units
 {
@@ -10,7 +11,26 @@ namespace WritingMethods_Simulator.Units
     {
         public override void Execute(Instruction instruction, int cycleCalled)
         {
-            throw new NotImplementedException();
+            occupied = true;
+            var timeStart = DateTime.Now.Millisecond;
+            int changed = 0;
+
+            int tag = instruction.date_instr / DataCache.sizeDC;
+            int blOff = instruction.date_instr % DataCache.sizeDC;
+            DataCache.DataStructs[blOff].tagC = tag;
+            DataCache.DataStructs[blOff].data = instruction.date_instr;
+            DataCache.DataStructs[blOff].V = true;
+            DataCache.DataStructs[blOff].D = true;
+
+            while (DateTime.Now.Millisecond - timeStart < 700)
+                if (Program.cycles - cycleCalled > 0)
+                {
+                    changed = 1;
+                    break;
+                }
+            if (changed == 0)
+                Program.cycles++;
+            occupied = false;
         }
     }
 }

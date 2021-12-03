@@ -22,7 +22,7 @@ namespace WritingMethods_Simulator
         public static int IBS;
         public static int FR;
         public static string strategy;
-        public static int MMlatency;
+        public static int MMLatency;
         public static DecodingUnit[] DEC;
         public static ArithmeticLogicUnit[] ALU;
         public static BranchUnit[] BR;
@@ -41,12 +41,12 @@ namespace WritingMethods_Simulator
             Application.Run(new Form1());
         }
 
-        static public void Simulate(int ir, int ibs, int fr, int sizeIC, int sizeDC, int MMlatency, string strategy)
+        static public void Simulate(int ir, int ibs, int fr, int sizeIC, int sizeDC, int MMLatency, string strategy)
         {
             InstructionCache instructionCache = new InstructionCache(sizeIC);
             DataCache dataCache = new DataCache(sizeDC);
             Program.strategy = strategy;
-            Program.MMlatency = MMlatency;
+            Program.MMLatency = MMLatency;
 
             IR = ir;
             IBS = ibs;
