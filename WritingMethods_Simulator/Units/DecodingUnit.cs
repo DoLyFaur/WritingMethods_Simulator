@@ -9,6 +9,8 @@ namespace WritingMethods_Simulator.Units
     public class DecodingUnit
     {
         public bool occupied;
+        /*public Task[] tsk = new Task[300];
+        public int tskNo = -1;*/
 
         public DecodingUnit()
         {
@@ -30,72 +32,72 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            Program.cycles++;
+                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
-                                if (Program.ALU[i].instruction == null)
+                                if (Program.ALU[i].occupied == false)
                                 {
-                                    Program.ALU[i].instruction = instruction;
+                                    occupied = false;
+                                    Program.ALU[i].Execute(instruction, Program.cycles);
                                     dispatched = 1;
                                     break;
                                 }
                             }
                         }
-                        occupied = false;
                         break;
                     }
                 case 'B':
                     {
                         while(dispatched==0)
                         {
-                            Program.cycles++;
+                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
-                                if (Program.BR[i].instruction == null)
+                                if (Program.BR[i].occupied == false)
                                 {
-                                    Program.BR[i].instruction = instruction;
+                                    occupied = false;
+                                    Program.BR[i].Execute(instruction, Program.cycles);
                                     dispatched = 1;
                                     break;
                                 }
                             }
                         }
-                        occupied = false;
                         break;
                     }
                 case 'S':
                     {
                         while (dispatched == 0)
                         {
-                            Program.cycles++;
+                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
-                                if (Program.ST[i].instruction == null)
+                                if (Program.ST[i].occupied == false)
                                 {
-                                    Program.ST[i].instruction = instruction;
+                                    occupied = false;
+                                    Program.ST[i].Execute(instruction, Program.cycles);
                                     dispatched = 1;
                                     break;
                                 }
                             }
                         }
-                        occupied = false;
                         break;
                     }
                 case 'L':
                     {
                         while (dispatched == 0)
                         {
-                            Program.cycles++;
+                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
-                                if (Program.LD[i].instruction == null)
+                                if (Program.LD[i].occupied == false)
                                 {
-                                    Program.LD[i].instruction = instruction;
+                                    occupied = false;
+                                    Program.LD[i].Execute(instruction, Program.cycles);
                                     dispatched = 1;
                                     break;
                                 }
                             }
                         }
-                        occupied = false;
                         break;
                     }
                 default: throw new Exception("Unknown instruction");

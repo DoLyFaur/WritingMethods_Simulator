@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace WritingMethods_Simulator.Units
 {
-    public class ExecutionUnit
+    public abstract class ExecutionUnit
     {
-        public Instruction instruction = null;
+        public bool occupied = false;
+
+        public abstract void Execute(Instruction instruction, int cycleCalled);
     }
 }

@@ -11,10 +11,9 @@ namespace WritingMethods_Simulator.BigMemory
         private static int sizeIC;
         public struct InstructionStruct
         {
-            Instruction instruction;
-            int tagC;
-            bool V;
-            bool D;
+            public Instruction instruction;
+            public int tagC;
+            public bool V;
         }
 
         InstructionStruct[] DataStructs = new InstructionStruct[sizeIC];
@@ -22,6 +21,11 @@ namespace WritingMethods_Simulator.BigMemory
         public InstructionCache(int size_IC)
         {
             sizeIC = size_IC;
+            for (int i = 0; i < sizeIC; i++)
+            {
+                DataStructs[i] = new InstructionStruct();
+                DataStructs[i].V = false;
+            }
         }
     }
 }

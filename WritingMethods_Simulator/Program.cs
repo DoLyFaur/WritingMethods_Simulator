@@ -21,6 +21,8 @@ namespace WritingMethods_Simulator
         public static int IR;
         public static int IBS;
         public static int FR;
+        public static string strategy;
+        public static int MMlatency;
         public static DecodingUnit[] DEC;
         public static ArithmeticLogicUnit[] ALU;
         public static BranchUnit[] BR;
@@ -39,10 +41,12 @@ namespace WritingMethods_Simulator
             Application.Run(new Form1());
         }
 
-        static public void Simulate(int ir, int ibs, int fr, int sizeIC, int sizeDC)
+        static public void Simulate(int ir, int ibs, int fr, int sizeIC, int sizeDC, int MMlatency, string strategy)
         {
             InstructionCache instructionCache = new InstructionCache(sizeIC);
             DataCache dataCache = new DataCache(sizeDC);
+            Program.strategy = strategy;
+            Program.MMlatency = MMlatency;
 
             IR = ir;
             IBS = ibs;
@@ -52,32 +56,63 @@ namespace WritingMethods_Simulator
             {
                 DEC[i] = new DecodingUnit();
             }
-            //DecodingUnit[] DEC = new DecodingUnit[FR];
             ArithmeticLogicUnit[] ALU = new ArithmeticLogicUnit[IR];
             BranchUnit[] BR = new BranchUnit[IR];
             StoreUnit[] ST = new StoreUnit[IR];
             LoadUnit[] LD = new LoadUnit[IR];
+            for (int i = 0; i < IR; i++)
+            {
+                ALU[i] = new ArithmeticLogicUnit();
+                BR[i] = new BranchUnit();
+                ST[i] = new StoreUnit();
+                LD[i] = new LoadUnit();
+            }
 
             InstructionBuffer instructionBuffer = new InstructionBuffer(IBS);
-            BinaryReader binary_reader = new BinaryReader(File.Open("FTOWER.TRC", FileMode.Open));
+            BinaryReader binary_reader = new BinaryReader(File.Open("FSORT.TRC", FileMode.Open));
             int ind = 1;
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
                 //cycles++;
                 instructionBuffer.Read(FR, binary_reader);
-                for (int i = 0; i < FR; i++)
+                Program.cycles++;
+                //while(instructionBuffer.Count!=0)
                 {
-                    if (!DEC[i].occupied && instructionBuffer.Count!=0)
+                    //Program.cycles++;
+                    Task[] tsk = new Task[FR];
+                    for (int i = 0; i < FR && instructionBuffer.Count != 0; i++)
                     {
-                        //DEC[i].occupied = true;
-                        //DEC[i].Decode(instructionBuffer.Take());*/
+                        if (!DEC[i].occupied)
+                        {
+                            DEC[i].occupied = true;
+                            Instruction instruction = instructionBuffer.Take();
+                            if (instruction == null)
+                            {
+                                ind = 0;
+                                continue;
+                            }
+                            tsk[i] = Task.Run(()=>DEC[i].Decode(instruction));
+                        }
+                    }
+                }
+            }
+            //empty instructionBuffer
+            while (instructionBuffer.Count != 0)
+            {
+                Program.cycles++;
+                Task[] tsk = new Task[FR];
+                for (int i = 0; i < FR && instructionBuffer.Count != 0; i++)
+                {
+                    if (!DEC[i].occupied)
+                    {
+                        DEC[i].occupied = true;
                         Instruction instruction = instructionBuffer.Take();
                         if (instruction == null)
                         {
                             ind = 0;
                             continue;
                         }
-                        //DEC[i].Decode(instruction);
+                        tsk[i] = Task.Run(() => DEC[i].Decode(instruction));
                     }
                 }
             }

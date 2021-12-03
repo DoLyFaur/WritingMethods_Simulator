@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace WritingMethods_Simulator.Units
 {
-    public class BranchUnit:ExecutionUnit
+    public class BranchUnit : ExecutionUnit
     {
+        public override void Execute(Instruction instruction, int cycleCalled)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,5 +8,9 @@ namespace WritingMethods_Simulator.Units
 {
     public class LoadUnit : ExecutionUnit
     {
+        public override void Execute(Instruction instruction, int cycleCalled)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
