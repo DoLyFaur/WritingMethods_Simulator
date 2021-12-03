@@ -34,7 +34,7 @@ namespace WritingMethods_Simulator.Units
                 else
                 {
                     Program.cycles += Program.MMLatency;
-                    if(Program.strategy=="Write Back" && ) // vezi ce se intampla la miss pt WB si WT
+                    if(Program.strategy=="Write Back" && ) // vezi ce se intampla la miss pt Default, WB si WT
                 }
             }
             else
