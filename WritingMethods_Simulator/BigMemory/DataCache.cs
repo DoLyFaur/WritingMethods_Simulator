@@ -17,11 +17,12 @@ namespace WritingMethods_Simulator.BigMemory
             public bool D;
         }
 
-        public static DataStruct[] DataStructs = new DataStruct[sizeDC];
+        public static DataStruct[] DataStructs;
 
         public DataCache(int size_DC)
         {
             sizeDC = size_DC;
+            DataStructs = new DataStruct[sizeDC];
             for (int i = 0; i < sizeDC; i++)
             {
                 DataStructs[i] = new DataStruct();

@@ -19,39 +19,73 @@ namespace WritingMethods_Simulator.Units
             int blOff = instruction.date_instr % DataCache.sizeDC;
             int hit = 0;
             if (DataCache.DataStructs[blOff].V == true && DataCache.DataStructs[blOff].tagC == tag)
-                hit = 1;
-
-            while (DateTime.Now.Millisecond - timeStart < 500)
-                if (Program.cycles - cycleCalled > 0)
-                {
-                    changed = 1;
-                    break;
-                }
-            if (changed == 0)
             {
-                if (hit == 1)
-                    Program.cycles++;
+                hit = 1;
+                Program.DCHits++;
+            }
+            Program.DCAccesses++;
+
+            if (Program.strategy != "Default")
+            {
+                /*while (DateTime.Now.Millisecond - timeStart < 500)
+                    if (Program.cycles - cycleCalled > 0)
+                    {
+                        changed = 1;
+                        break;
+                    }
+                if (changed == 0)
+                {*/
+                    if (hit == 1)
+                    {
+                        if (Program.strategy == "Write Back")
+                            Program.cycles++;
+                        else
+                            Program.cycles += Program.MMLatency;
+                    }
+                    else
+                    {
+                        Program.cycles += Program.MMLatency;
+                        if (Program.strategy == "Write Back")
+                        {
+                            Program.cycles++;
+                            DataCache.DataStructs[blOff].D = true;
+                            DataCache.DataStructs[blOff].V = true;
+                        }
+                    }
+                }
                 else
                 {
-                    Program.cycles += Program.MMLatency;
-                    if(Program.strategy=="Write Back" && ) // vezi ce se intampla la miss pt Default, WB si WT
-                }
-            }
-            else
-            {
-                if (hit == 0)
-                {
-                    changed = 0;
-                    while (DateTime.Now.Millisecond - timeStart < 1500)
-                        if (Program.cycles - cycleCalled >= Program.MMLatency)
+                    if (Program.strategy == "Write Through")
+                    {
+                        /*changed = 0;
+                        while (DateTime.Now.Millisecond - timeStart < 1500)
+                            if (Program.cycles - cycleCalled >= Program.MMLatency)
+                            {
+                                changed = 1;
+                                break;
+                            }
+                        if (changed == 0)*/
+                            Program.cycles += Program.MMLatency - (Program.cycles - cycleCalled);
+                    }
+                    else
+                    {
+                        if (hit == 0) 
                         {
-                            changed = 1;
-                            break;
+                            DataCache.DataStructs[blOff].D = true;
+                            DataCache.DataStructs[blOff].V = true;
+                            /*changed = 0;
+                            while (DateTime.Now.Millisecond - timeStart < 1500)
+                                if (Program.cycles - cycleCalled >= Program.MMLatency + 1) 
+                                {
+                                    changed = 1;
+                                    break;
+                                }
+                            if (changed == 0)*/
+                                Program.cycles += Program.MMLatency + 1 - (Program.cycles - cycleCalled);
                         }
-                    if (changed == 0)
-                        Program.cycles += Program.MMLatency - (Program.cycles - cycleCalled);
+                    }
                 }
-            }
+            //}
             occupied = false;
         }
     }

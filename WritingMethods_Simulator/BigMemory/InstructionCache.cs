@@ -16,11 +16,16 @@ namespace WritingMethods_Simulator.BigMemory
             public bool V;
         }
 
-        public static InstructionStruct[] InstructionStructs = new InstructionStruct[sizeIC];
+        public static InstructionStruct[] InstructionStructs;
+
+        public static void Initialize()
+        {
+        }
 
         public InstructionCache(int size_IC)
         {
             sizeIC = size_IC;
+            InstructionStructs = new InstructionStruct[sizeIC];
             for (int i = 0; i < sizeIC; i++)
             {
                 InstructionStructs[i] = new InstructionStruct();

@@ -28,12 +28,20 @@ namespace WritingMethods_Simulator
         public static BranchUnit[] BR;
         public static StoreUnit[] ST;
         public static LoadUnit[] LD;
+        public static int ICHits;
+        public static int ICAccesses;
+        public static int DCHits;
+        public static int DCAccesses;
 
         [STAThread]
         static void Main()
         {
             cycles = 0;
             instructions = 0;
+            ICHits = 0;
+            ICAccesses = 0;
+            DCHits = 0;
+            DCAccesses = 0;
 
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
@@ -56,10 +64,10 @@ namespace WritingMethods_Simulator
             {
                 DEC[i] = new DecodingUnit();
             }
-            ArithmeticLogicUnit[] ALU = new ArithmeticLogicUnit[IR];
-            BranchUnit[] BR = new BranchUnit[IR];
-            StoreUnit[] ST = new StoreUnit[IR];
-            LoadUnit[] LD = new LoadUnit[IR];
+            ALU = new ArithmeticLogicUnit[IR];
+            BR = new BranchUnit[IR];
+            ST = new StoreUnit[IR];
+            LD = new LoadUnit[IR];
             for (int i = 0; i < IR; i++)
             {
                 ALU[i] = new ArithmeticLogicUnit();
@@ -69,7 +77,7 @@ namespace WritingMethods_Simulator
             }
 
             InstructionBuffer instructionBuffer = new InstructionBuffer(IBS);
-            BinaryReader binary_reader = new BinaryReader(File.Open("FSORT.TRC", FileMode.Open));
+            BinaryReader binary_reader = new BinaryReader(File.Open("FTREE.TRC", FileMode.Open));
             int ind = 1;
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
@@ -91,7 +99,13 @@ namespace WritingMethods_Simulator
                                 ind = 0;
                                 continue;
                             }
-                            tsk[i] = Task.Run(()=>DEC[i].Decode(instruction));
+                            else
+                            {
+                                int aux = i;
+                                tsk[aux] = Task.Run(() => {
+                                    DEC[aux].Decode(instruction);
+                                });
+                            }
                         }
                     }
                 }
@@ -112,13 +126,21 @@ namespace WritingMethods_Simulator
                             ind = 0;
                             continue;
                         }
-                        tsk[i] = Task.Run(() => DEC[i].Decode(instruction));
+                        int aux = i;
+                        tsk[aux] = Task.Run(() => {
+                            DEC[aux].Decode(instruction);
+                        });
                     }
                 }
             }
             if (ind == 1)
                 instructions++;
-            Console.WriteLine(instructions);
+
+            Console.WriteLine("Instructions: " + instructions);
+            Console.WriteLine("Cycles: " + cycles);
+            Console.WriteLine("IPC: " + instructions * 1.0 / cycles);
+            Console.WriteLine("IC miss rate: " + ((1 - ICHits * 1.0 / ICAccesses) * 100) + " %");
+            Console.WriteLine("DC miss rate: " + ((1 - DCHits * 1.0 / DCAccesses) * 100) + " %");
         }
     }
 }

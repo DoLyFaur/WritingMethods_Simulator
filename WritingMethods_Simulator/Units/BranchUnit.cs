@@ -19,23 +19,27 @@ namespace WritingMethods_Simulator.Units
             int blOff = instruction.PC_crt % InstructionCache.sizeIC;
             int hit = 0;
             if (InstructionCache.InstructionStructs[blOff].V == true && InstructionCache.InstructionStructs[blOff].tagC == tag)
+            {
                 hit = 1;
+                Program.ICHits++;
+            }
+            Program.ICAccesses++;
 
-            while (DateTime.Now.Millisecond - timeStart < 300)
+            /*while (DateTime.Now.Millisecond - timeStart < 300)
                 if (Program.cycles - cycleCalled > 0)
                 {
                     changed = 1;
                     break;
                 }
             if (changed == 0)
-            {
+            {*/
                 if (hit == 1)
                     Program.cycles++;
                 else
                     Program.cycles += Program.MMLatency;
-            }
+            /*}
             else
-            {
+            {*/
                 if (hit == 0)
                 {
                     changed = 0;
@@ -48,7 +52,7 @@ namespace WritingMethods_Simulator.Units
                     if (changed == 0)
                         Program.cycles += Program.MMLatency - (Program.cycles - cycleCalled);
                 }
-            }
+            //}
             occupied = false;
         }
     }

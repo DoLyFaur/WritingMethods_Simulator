@@ -22,13 +22,13 @@ namespace WritingMethods_Simulator.Units
             DataCache.DataStructs[blOff].V = true;
             DataCache.DataStructs[blOff].D = true;
 
-            while (DateTime.Now.Millisecond - timeStart < 700)
+            /*while (DateTime.Now.Millisecond - timeStart < 700)
                 if (Program.cycles - cycleCalled > 0)
                 {
                     changed = 1;
                     break;
                 }
-            if (changed == 0)
+            if (changed == 0)*/
                 Program.cycles++;
             occupied = false;
         }
