@@ -24,7 +24,8 @@ namespace WritingMethods_Simulator.SmallMemory
         public Instruction GetNextInstruction(BinaryReader reader)
         {
             char c = reader.ReadChar();
-            while(c==' ' || c=='\n')
+            //while(c==' ' || c=='\n')
+            while(!Char.IsLetterOrDigit(c))
             {
                 if (reader.BaseStream.Position != reader.BaseStream.Length)
                     c = reader.ReadChar();
@@ -54,6 +55,10 @@ namespace WritingMethods_Simulator.SmallMemory
             }
             di += ch;
 
+            if (pc.Contains(" "))
+                pc = pc.Substring(0, pc.Length - 1);
+            if (di.Contains(" "))
+                di = di.Substring(0, di.Length - 1);
             return new Instruction(c, Int32.Parse(pc), Int32.Parse(di));
         }
 
