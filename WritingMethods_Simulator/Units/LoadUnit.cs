@@ -52,8 +52,8 @@ namespace WritingMethods_Simulator.Units
                             DataCache.DataStructs[blOff].V = true;
                         }
                     }
-                }
-                else
+            }
+               /* else
                 {
                     if (Program.strategy == "Write Through")
                     {
@@ -64,7 +64,7 @@ namespace WritingMethods_Simulator.Units
                                 changed = 1;
                                 break;
                             }
-                        if (changed == 0)*/
+                        if (changed == 0)
                             Program.cycles += Program.MMLatency - (Program.cycles - cycleCalled);
                     }
                     else
@@ -80,12 +80,12 @@ namespace WritingMethods_Simulator.Units
                                     changed = 1;
                                     break;
                                 }
-                            if (changed == 0)*/
+                            if (changed == 0)
                                 Program.cycles += Program.MMLatency + 1 - (Program.cycles - cycleCalled);
                         }
                     }
                 }
-            //}
+            //}*/
             occupied = false;
         }
     }

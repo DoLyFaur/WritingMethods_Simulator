@@ -40,19 +40,19 @@ namespace WritingMethods_Simulator
             this.MMcombobox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.BS1combobox = new System.Windows.Forms.ComboBox();
             this.SizeICcombobox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.BS2combobox = new System.Windows.Forms.ComboBox();
             this.SizeDCcombobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Strategycombobox = new System.Windows.Forms.ComboBox();
             this.SimulateButton = new System.Windows.Forms.Button();
+            this.FileTextBox = new System.Windows.Forms.TextBox();
+            this.SelectTraceButton = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ResultTextBox = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -106,9 +106,10 @@ namespace WritingMethods_Simulator
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label5.Location = new System.Drawing.Point(12, 143);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 20);
+            this.label5.Size = new System.Drawing.Size(155, 20);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Main Memory latecy:";
+            this.label5.Text = "Main Memory latency:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // FRcombobox
             // 
@@ -188,48 +189,15 @@ namespace WritingMethods_Simulator
             this.label7.TabIndex = 5;
             this.label7.Text = "Instruction Cache (direct mapped)";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label8.Location = new System.Drawing.Point(269, 80);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 20);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Bloc Size:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label9.Location = new System.Drawing.Point(427, 72);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 20);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "= FR";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label10.Location = new System.Drawing.Point(269, 109);
+            this.label10.Location = new System.Drawing.Point(287, 72);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 20);
             this.label10.TabIndex = 8;
             this.label10.Text = "SIZE_IC:";
-            // 
-            // BS1combobox
-            // 
-            this.BS1combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BS1combobox.FormattingEnabled = true;
-            this.BS1combobox.Items.AddRange(new object[] {
-            "4",
-            "8",
-            "16"});
-            this.BS1combobox.Location = new System.Drawing.Point(347, 72);
-            this.BS1combobox.Name = "BS1combobox";
-            this.BS1combobox.Size = new System.Drawing.Size(74, 28);
-            this.BS1combobox.TabIndex = 9;
             // 
             // SizeICcombobox
             // 
@@ -244,7 +212,7 @@ namespace WritingMethods_Simulator
             "2048",
             "4092",
             "8192"});
-            this.SizeICcombobox.Location = new System.Drawing.Point(347, 106);
+            this.SizeICcombobox.Location = new System.Drawing.Point(353, 69);
             this.SizeICcombobox.Name = "SizeICcombobox";
             this.SizeICcombobox.Size = new System.Drawing.Size(74, 28);
             this.SizeICcombobox.TabIndex = 10;
@@ -254,45 +222,21 @@ namespace WritingMethods_Simulator
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 7.8F);
             this.label11.ForeColor = System.Drawing.Color.Blue;
-            this.label11.Location = new System.Drawing.Point(562, 45);
+            this.label11.Location = new System.Drawing.Point(542, 44);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(179, 19);
             this.label11.TabIndex = 11;
             this.label11.Text = "Data Cache (direct mapped)";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label12.Location = new System.Drawing.Point(542, 77);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 20);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Bloc Size:";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label13.Location = new System.Drawing.Point(547, 109);
+            this.label13.Location = new System.Drawing.Point(547, 77);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(67, 20);
             this.label13.TabIndex = 13;
             this.label13.Text = "SIZE_DC:";
-            // 
-            // BS2combobox
-            // 
-            this.BS2combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BS2combobox.FormattingEnabled = true;
-            this.BS2combobox.Items.AddRange(new object[] {
-            "4",
-            "8",
-            "16"});
-            this.BS2combobox.Location = new System.Drawing.Point(625, 72);
-            this.BS2combobox.Name = "BS2combobox";
-            this.BS2combobox.Size = new System.Drawing.Size(74, 28);
-            this.BS2combobox.TabIndex = 14;
-            this.BS2combobox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // SizeDCcombobox
             // 
@@ -307,7 +251,7 @@ namespace WritingMethods_Simulator
             "2048",
             "4096",
             "8192"});
-            this.SizeDCcombobox.Location = new System.Drawing.Point(625, 106);
+            this.SizeDCcombobox.Location = new System.Drawing.Point(625, 74);
             this.SizeDCcombobox.Name = "SizeDCcombobox";
             this.SizeDCcombobox.Size = new System.Drawing.Size(74, 28);
             this.SizeDCcombobox.TabIndex = 15;
@@ -317,7 +261,7 @@ namespace WritingMethods_Simulator
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label14.ForeColor = System.Drawing.Color.Blue;
-            this.label14.Location = new System.Drawing.Point(547, 143);
+            this.label14.Location = new System.Drawing.Point(547, 114);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 20);
             this.label14.TabIndex = 16;
@@ -331,14 +275,14 @@ namespace WritingMethods_Simulator
             "Default",
             "Write Back",
             "Write Through"});
-            this.Strategycombobox.Location = new System.Drawing.Point(625, 140);
+            this.Strategycombobox.Location = new System.Drawing.Point(620, 114);
             this.Strategycombobox.Name = "Strategycombobox";
             this.Strategycombobox.Size = new System.Drawing.Size(137, 28);
             this.Strategycombobox.TabIndex = 17;
             // 
             // SimulateButton
             // 
-            this.SimulateButton.Location = new System.Drawing.Point(625, 193);
+            this.SimulateButton.Location = new System.Drawing.Point(620, 183);
             this.SimulateButton.Name = "SimulateButton";
             this.SimulateButton.Size = new System.Drawing.Size(137, 30);
             this.SimulateButton.TabIndex = 18;
@@ -346,24 +290,66 @@ namespace WritingMethods_Simulator
             this.SimulateButton.UseVisualStyleBackColor = true;
             this.SimulateButton.Click += new System.EventHandler(this.SimulateButton_Click);
             // 
+            // FileTextBox
+            // 
+            this.FileTextBox.Location = new System.Drawing.Point(12, 183);
+            this.FileTextBox.Name = "FileTextBox";
+            this.FileTextBox.Size = new System.Drawing.Size(478, 27);
+            this.FileTextBox.TabIndex = 19;
+            this.FileTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // SelectTraceButton
+            // 
+            this.SelectTraceButton.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectTraceButton.Location = new System.Drawing.Point(496, 183);
+            this.SelectTraceButton.Name = "SelectTraceButton";
+            this.SelectTraceButton.Size = new System.Drawing.Size(118, 27);
+            this.SelectTraceButton.TabIndex = 20;
+            this.SelectTraceButton.Text = "Select Trace";
+            this.SelectTraceButton.UseVisualStyleBackColor = true;
+            this.SelectTraceButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Indigo;
+            this.label15.Location = new System.Drawing.Point(12, 224);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(55, 20);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Results";
+            // 
+            // ResultTextBox
+            // 
+            this.ResultTextBox.Location = new System.Drawing.Point(12, 247);
+            this.ResultTextBox.Multiline = true;
+            this.ResultTextBox.Name = "ResultTextBox";
+            this.ResultTextBox.Size = new System.Drawing.Size(745, 173);
+            this.ResultTextBox.TabIndex = 22;
+            this.ResultTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ResultTextBox);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.SelectTraceButton);
+            this.Controls.Add(this.FileTextBox);
             this.Controls.Add(this.SimulateButton);
             this.Controls.Add(this.Strategycombobox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.SizeDCcombobox);
-            this.Controls.Add(this.BS2combobox);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.SizeICcombobox);
-            this.Controls.Add(this.BS1combobox);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.MMcombobox);
@@ -377,7 +363,7 @@ namespace WritingMethods_Simulator
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.Name = "Form1";
-            this.Text = "Cache Parameters";
+            this.Text = "Writing Methods - Simulator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -396,19 +382,19 @@ namespace WritingMethods_Simulator
         private System.Windows.Forms.ComboBox MMcombobox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox BS1combobox;
         private System.Windows.Forms.ComboBox SizeICcombobox;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox BS2combobox;
         private System.Windows.Forms.ComboBox SizeDCcombobox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox Strategycombobox;
         private System.Windows.Forms.Button SimulateButton;
+        private System.Windows.Forms.TextBox FileTextBox;
+        private System.Windows.Forms.Button SelectTraceButton;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox ResultTextBox;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

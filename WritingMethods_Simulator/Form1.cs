@@ -67,6 +67,7 @@ namespace WritingMethods_Simulator
 
         private void SimulateButton_Click(object sender, EventArgs e)
         {
+            string File = FileTextBox.Text;
             int IR = Int32.Parse(IRcombobox.Text);
             int IBS = Int32.Parse(IBScombobox.Text);
             int FR = Int32.Parse(FRcombobox.Text);
@@ -74,7 +75,44 @@ namespace WritingMethods_Simulator
             int sizeDC = Int32.Parse(SizeDCcombobox.Text);
             string strategy = Strategycombobox.Text;
             int MMLatency = Int32.Parse(MMcombobox.Text);
-            Program.Simulate(IR, IBS, FR, sizeIC, sizeDC, MMLatency, strategy);
+            Program.Simulate(File, IR, IBS, FR, sizeIC, sizeDC, MMLatency, strategy, ResultTextBox);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = @"C:\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug",
+                Title = "Browse Trace",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                DefaultExt = "trc",
+                Filter = "trc files (*.trc)|*.trc",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileTextBox.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

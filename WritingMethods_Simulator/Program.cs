@@ -49,8 +49,10 @@ namespace WritingMethods_Simulator
             Application.Run(new Form1());
         }
 
-        static public void Simulate(int ir, int ibs, int fr, int sizeIC, int sizeDC, int MMLatency, string strategy)
+        static public void Simulate(string file, int ir, int ibs, int fr, int sizeIC, int sizeDC, int MMLatency,
+            string strategy, TextBox Results)
         {
+            
             InstructionCache instructionCache = new InstructionCache(sizeIC);
             DataCache dataCache = new DataCache(sizeDC);
             Program.strategy = strategy;
@@ -77,7 +79,7 @@ namespace WritingMethods_Simulator
             }
 
             InstructionBuffer instructionBuffer = new InstructionBuffer(IBS);
-            BinaryReader binary_reader = new BinaryReader(File.Open("FTREE.TRC", FileMode.Open));
+            BinaryReader binary_reader = new BinaryReader(File.Open(file, FileMode.Open));
             int ind = 1;
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
@@ -136,11 +138,12 @@ namespace WritingMethods_Simulator
             if (ind == 1)
                 instructions++;
 
-            Console.WriteLine("Instructions: " + instructions);
-            Console.WriteLine("Cycles: " + cycles);
-            Console.WriteLine("IPC: " + instructions * 1.0 / cycles);
-            Console.WriteLine("IC miss rate: " + ((1 - ICHits * 1.0 / ICAccesses) * 100) + " %");
-            Console.WriteLine("DC miss rate: " + ((1 - DCHits * 1.0 / DCAccesses) * 100) + " %");
+            Results.AppendText("Instructions: " + instructions + "\r\n"); 
+            Results.AppendText("Cycles: " + cycles + "\r\n");
+            Results.AppendText("IPC: " + instructions * 1.0 / cycles + "\r\n");
+            Results.AppendText("IC miss rate: " + ((1 - ICHits * 1.0 / ICAccesses) * 100) + " %" + "\r\n");
+            Results.AppendText("DC miss rate: " + ((1 - DCHits * 1.0 / DCAccesses) * 100) + " %");
+ 
         }
     }
 }

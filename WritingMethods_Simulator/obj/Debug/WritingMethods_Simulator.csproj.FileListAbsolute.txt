@@ -8,3 +8,23 @@ C:\Users\User\Fac\IV.1\Sim_optim_arh_calc\WritingMethods_Simulator\WritingMethod
 C:\Users\User\Fac\IV.1\Sim_optim_arh_calc\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.exe
 C:\Users\User\Fac\IV.1\Sim_optim_arh_calc\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.pdb
 C:\Users\User\Fac\IV.1\Sim_optim_arh_calc\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.csprojAssemblyReference.cache
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug\WritingMethods_Simulator.exe.config
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug\WritingMethods_Simulator.exe
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug\WritingMethods_Simulator.pdb
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.csproj.AssemblyReference.cache
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.Form1.resources
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.Properties.Resources.resources
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.csproj.GenerateResource.cache
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.csproj.CoreCompileInputs.cache
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.exe
+C:\Users\Lavinia\Desktop\Proiect SOAC - variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.pdb
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug\WritingMethods_Simulator.exe.config
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug\WritingMethods_Simulator.exe
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug\WritingMethods_Simulator.pdb
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.csproj.AssemblyReference.cache
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.Form1.resources
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.Properties.Resources.resources
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.csproj.GenerateResource.cache
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.csproj.CoreCompileInputs.cache
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.exe
+C:\Users\Lavinia\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\obj\Debug\WritingMethods_Simulator.pdb

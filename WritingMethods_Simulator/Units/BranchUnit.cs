@@ -40,7 +40,7 @@ namespace WritingMethods_Simulator.Units
             /*}
             else
             {*/
-                if (hit == 0)
+               /* if (hit == 0)
                 {
                     changed = 0;
                     while (DateTime.Now.Millisecond - timeStart < 1100)
@@ -52,7 +52,7 @@ namespace WritingMethods_Simulator.Units
                     if (changed == 0)
                         Program.cycles += Program.MMLatency - (Program.cycles - cycleCalled);
                 }
-            //}
+            //}*/
             occupied = false;
         }
     }
