@@ -153,6 +153,7 @@ namespace WritingMethods_Simulator
             this.IRcombobox.Name = "IRcombobox";
             this.IRcombobox.Size = new System.Drawing.Size(65, 28);
             this.IRcombobox.TabIndex = 2;
+            this.IRcombobox.SelectedIndexChanged += new System.EventHandler(this.IRcombobox_SelectedIndexChanged);
             // 
             // MMcombobox
             // 

@@ -42,6 +42,65 @@ namespace WritingMethods_Simulator
 
         private void FRcombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (IBScombobox.SelectedIndex == 0)
+            {
+                IBScombobox.Items.Clear();
+                IBScombobox.Items.AddRange(new object[]
+                    {
+                    "4",
+                    "8",
+                    "16",
+                    "32"
+                    });
+                IBScombobox.Refresh();
+
+                IRcombobox.Items.Clear();
+                IRcombobox.Items.AddRange(new object[]
+                { "2",
+                  "4",
+                  });
+                IRcombobox.Refresh();
+            }
+
+            if (FRcombobox.SelectedIndex == 1)
+            {
+                IBScombobox.Items.Clear();
+                IBScombobox.Items.AddRange(new object[]
+               {  "8",
+                  "16",
+                  "32"
+                 });
+                IBScombobox.Refresh();
+
+
+                IRcombobox.Items.Clear();
+                IRcombobox.Items.AddRange(new object[]
+               { "2",
+                  "4",
+                  "8"
+                 });
+                IRcombobox.Refresh();
+            }
+
+            if (FRcombobox.SelectedIndex == 2)
+            {
+                IBScombobox.Items.Clear();
+                IBScombobox.Items.AddRange(new object[]
+               { "16",
+                  "32"
+                 });
+                IBScombobox.Refresh();
+
+
+                IRcombobox.Items.Clear();
+                IRcombobox.Items.AddRange(new object[]
+               { "2",
+                  "4",
+                  "8",
+                  "16"
+                 });
+               IRcombobox.Refresh();
+            }
 
         }
 
@@ -111,6 +170,11 @@ namespace WritingMethods_Simulator
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IRcombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
