@@ -25,7 +25,6 @@ namespace WritingMethods_Simulator.Units
 
             if (Program.strategy != "Default")
             {
-                
                 if (hit == 1)
                 {
                     if (Program.strategy == "Write Back")

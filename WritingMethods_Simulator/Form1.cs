@@ -84,18 +84,7 @@ namespace WritingMethods_Simulator
 
         }
 
-        private void SimulateButton_Click(object sender, EventArgs e)
-        {
-            string File = FileTextBox.Text;
-            int IR = Int32.Parse(IRcombobox.Text);
-            int IBS = Int32.Parse(IBScombobox.Text);
-            int FR = Int32.Parse(FRcombobox.Text);
-            int sizeIC = Int32.Parse(SizeICcombobox.Text);
-            int sizeDC = Int32.Parse(SizeDCcombobox.Text);
-            string strategy = Strategycombobox.Text;
-            int MMLatency = Int32.Parse(MMcombobox.Text);
-            Program.Simulate(File, IR, IBS, FR, sizeIC, sizeDC, MMLatency, strategy, ResultTextBox);
-        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -118,6 +107,19 @@ namespace WritingMethods_Simulator
             {
                 FileTextBox.Text = openFileDialog1.FileName;
             }
+        }
+
+        private void SimulateButton_Click(object sender, EventArgs e)
+        {
+            string File = FileTextBox.Text;
+            int IR = Int32.Parse(IRcombobox.Text);
+            int IBS = Int32.Parse(IBScombobox.Text);
+            int FR = Int32.Parse(FRcombobox.Text);
+            int sizeIC = Int32.Parse(SizeICcombobox.Text);
+            int sizeDC = Int32.Parse(SizeDCcombobox.Text);
+            string strategy = Strategycombobox.Text;
+            int MMLatency = Int32.Parse(MMcombobox.Text);
+            Program.Simulate(File, IR, IBS, FR, sizeIC, sizeDC, MMLatency, strategy, ResultTextBox);
         }
     }
 }
