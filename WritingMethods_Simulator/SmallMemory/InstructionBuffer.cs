@@ -13,9 +13,8 @@ namespace WritingMethods_Simulator.SmallMemory
         int size;
         int lastTarget = 0;
         int ALUInstrToSend = 0;
-        int neededALU = 0;
-        Instruction instructionToSave;
-        int PC_crt = 0;
+        int PC_crt;
+
         public InstructionBuffer(int size)
         {
             this.size = size;
@@ -24,7 +23,6 @@ namespace WritingMethods_Simulator.SmallMemory
         public Instruction GetNextInstruction(BinaryReader reader)
         {
             char c = reader.ReadChar();
-            // while(c==' ' || c=='\n')
             while (!Char.IsLetterOrDigit(c))
             {
                 if (reader.BaseStream.Position != reader.BaseStream.Length)
@@ -88,7 +86,6 @@ namespace WritingMethods_Simulator.SmallMemory
                 if (instruction.PC_crt - lastTarget > 0)
                 {
                     PC_crt = lastTarget - 1;
-                    //instructionToSave = instruction;
                     ALUInstrToSend = instruction.PC_crt - lastTarget;
                     return ALUInstruction();
                 }
@@ -110,8 +107,6 @@ namespace WritingMethods_Simulator.SmallMemory
             {
                 return ALUInstruction();
             }
-            //Program.cycles += instruction.PC_crt - lastTarget + 1;
-            
         }
     }
 }

@@ -43,7 +43,6 @@ namespace WritingMethods_Simulator
             DCHits = 0;
             DCAccesses = 0;
 
-            //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
@@ -83,12 +82,9 @@ namespace WritingMethods_Simulator
             int ind = 1;
             while (binary_reader.BaseStream.Position != binary_reader.BaseStream.Length)
             {
-                //cycles++;
                 instructionBuffer.Read(FR, binary_reader);
                 Program.cycles++;
-                //while(instructionBuffer.Count!=0)
                 {
-                    //Program.cycles++;
                     Task[] tsk = new Task[FR];
                     for (int i = 0; i < FR && instructionBuffer.Count != 0; i++)
                     {

@@ -9,8 +9,6 @@ namespace WritingMethods_Simulator.Units
     public class DecodingUnit
     {
         public bool occupied;
-        /*public Task[] tsk = new Task[300];
-        public int tskNo = -1;*/
 
         public DecodingUnit()
         {
@@ -19,7 +17,6 @@ namespace WritingMethods_Simulator.Units
 
         public void Decode(Instruction instruction)
         {
-            //Program.instructions++;
             Dispatch(instruction);
         }
 
@@ -32,7 +29,6 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
                                 if (Program.ALU[i].occupied == false)
@@ -50,7 +46,6 @@ namespace WritingMethods_Simulator.Units
                     {
                         while(dispatched==0)
                         {
-                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
                                 if (Program.BR[i].occupied == false)
@@ -68,7 +63,6 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
                                 if (Program.ST[i].occupied == false)
@@ -86,7 +80,6 @@ namespace WritingMethods_Simulator.Units
                     {
                         while (dispatched == 0)
                         {
-                            //Program.cycles++;
                             for (int i = 0; i < Program.IR; i++)
                             {
                                 if (Program.LD[i].occupied == false)

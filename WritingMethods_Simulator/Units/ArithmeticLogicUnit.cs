@@ -11,16 +11,7 @@ namespace WritingMethods_Simulator.Units
         public override void Execute(Instruction instruction, int cycleCalled)
         {
             occupied = true;
-            var timeStart = DateTime.Now.Millisecond;
-            int changed = 0;
-            /*while (DateTime.Now.Millisecond - timeStart < 200)
-                if (Program.cycles - cycleCalled > 0)
-                {
-                    changed = 1;
-                    break;
-                }
-            if(changed==0)*/
-                Program.cycles++;
+            Program.cycles++;
             occupied = false;
         }
     }

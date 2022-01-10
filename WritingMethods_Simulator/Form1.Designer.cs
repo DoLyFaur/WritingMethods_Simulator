@@ -65,8 +65,7 @@ namespace WritingMethods_Simulator
             this.label1.Size = new System.Drawing.Size(184, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Architecture Parameters";
-            this.label1.FontChanged += new System.EventHandler(this.label1_FontChanged);
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // label2
             // 
@@ -77,7 +76,7 @@ namespace WritingMethods_Simulator
             this.label2.Size = new System.Drawing.Size(111, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Fetch Rate (FR):";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+ 
             // 
             // label3
             // 
@@ -88,7 +87,6 @@ namespace WritingMethods_Simulator
             this.label3.Size = new System.Drawing.Size(156, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Instruction Buffer Size:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -109,7 +107,6 @@ namespace WritingMethods_Simulator
             this.label5.Size = new System.Drawing.Size(155, 20);
             this.label5.TabIndex = 2;
             this.label5.Text = "Main Memory latency:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // FRcombobox
             // 
@@ -138,7 +135,7 @@ namespace WritingMethods_Simulator
             this.IBScombobox.Name = "IBScombobox";
             this.IBScombobox.Size = new System.Drawing.Size(65, 28);
             this.IBScombobox.TabIndex = 3;
-            this.IBScombobox.SelectedIndexChanged += new System.EventHandler(this.IBScombobox_SelectedIndexChanged);
+            //this.IBScombobox.SelectedIndexChanged += new System.EventHandler(this.IBScombobox_SelectedIndexChanged);
             // 
             // IRcombobox
             // 
@@ -153,7 +150,7 @@ namespace WritingMethods_Simulator
             this.IRcombobox.Name = "IRcombobox";
             this.IRcombobox.Size = new System.Drawing.Size(65, 28);
             this.IRcombobox.TabIndex = 2;
-            this.IRcombobox.SelectedIndexChanged += new System.EventHandler(this.IRcombobox_SelectedIndexChanged);
+            //this.IRcombobox.SelectedIndexChanged += new System.EventHandler(this.IRcombobox_SelectedIndexChanged);
             // 
             // MMcombobox
             // 
@@ -167,7 +164,7 @@ namespace WritingMethods_Simulator
             this.MMcombobox.Name = "MMcombobox";
             this.MMcombobox.Size = new System.Drawing.Size(65, 28);
             this.MMcombobox.TabIndex = 2;
-            this.MMcombobox.SelectedIndexChanged += new System.EventHandler(this.MMcombobox_SelectedIndexChanged);
+            //this.MMcombobox.SelectedIndexChanged += new System.EventHandler(this.MMcombobox_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -297,7 +294,7 @@ namespace WritingMethods_Simulator
             this.FileTextBox.Name = "FileTextBox";
             this.FileTextBox.Size = new System.Drawing.Size(478, 27);
             this.FileTextBox.TabIndex = 19;
-            this.FileTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            //this.FileTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // SelectTraceButton
             // 
@@ -328,7 +325,7 @@ namespace WritingMethods_Simulator
             this.ResultTextBox.Name = "ResultTextBox";
             this.ResultTextBox.Size = new System.Drawing.Size(745, 173);
             this.ResultTextBox.TabIndex = 22;
-            this.ResultTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            //this.ResultTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // openFileDialog1
             // 
@@ -365,7 +362,7 @@ namespace WritingMethods_Simulator
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.Name = "Form1";
             this.Text = "Writing Methods - Simulator";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

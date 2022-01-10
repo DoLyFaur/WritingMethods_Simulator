@@ -18,10 +18,6 @@ namespace WritingMethods_Simulator.BigMemory
 
         public static InstructionStruct[] InstructionStructs;
 
-        public static void Initialize()
-        {
-        }
-
         public InstructionCache(int size_IC)
         {
             sizeIC = size_IC;

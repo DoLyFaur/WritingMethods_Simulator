@@ -12,8 +12,6 @@ namespace WritingMethods_Simulator.Units
         public override void Execute(Instruction instruction, int cycleCalled)
         {
             occupied = true;
-            var timeStart = DateTime.Now.Millisecond;
-            int changed = 0;
 
             int tag = instruction.date_instr / DataCache.sizeDC;
             int blOff = instruction.date_instr % DataCache.sizeDC;
@@ -27,65 +25,26 @@ namespace WritingMethods_Simulator.Units
 
             if (Program.strategy != "Default")
             {
-                /*while (DateTime.Now.Millisecond - timeStart < 500)
-                    if (Program.cycles - cycleCalled > 0)
-                    {
-                        changed = 1;
-                        break;
-                    }
-                if (changed == 0)
-                {*/
-                    if (hit == 1)
-                    {
-                        if (Program.strategy == "Write Back")
-                            Program.cycles++;
-                        else
-                            Program.cycles += Program.MMLatency;
-                    }
-                    else
-                    {
-                        Program.cycles += Program.MMLatency;
-                        if (Program.strategy == "Write Back")
-                        {
-                            Program.cycles++;
-                            DataCache.DataStructs[blOff].D = true;
-                            DataCache.DataStructs[blOff].V = true;
-                        }
-                    }
-            }
-               /* else
+                
+                if (hit == 1)
                 {
-                    if (Program.strategy == "Write Through")
-                    {
-                        /*changed = 0;
-                        while (DateTime.Now.Millisecond - timeStart < 1500)
-                            if (Program.cycles - cycleCalled >= Program.MMLatency)
-                            {
-                                changed = 1;
-                                break;
-                            }
-                        if (changed == 0)
-                            Program.cycles += Program.MMLatency - (Program.cycles - cycleCalled);
-                    }
+                    if (Program.strategy == "Write Back")
+                        Program.cycles++;
                     else
+                        Program.cycles += Program.MMLatency;
+                }
+                else
+                {
+                    Program.cycles += Program.MMLatency;
+                    if (Program.strategy == "Write Back")
                     {
-                        if (hit == 0) 
-                        {
-                            DataCache.DataStructs[blOff].D = true;
-                            DataCache.DataStructs[blOff].V = true;
-                            /*changed = 0;
-                            while (DateTime.Now.Millisecond - timeStart < 1500)
-                                if (Program.cycles - cycleCalled >= Program.MMLatency + 1) 
-                                {
-                                    changed = 1;
-                                    break;
-                                }
-                            if (changed == 0)
-                                Program.cycles += Program.MMLatency + 1 - (Program.cycles - cycleCalled);
-                        }
+                        Program.cycles++;
+                        DataCache.DataStructs[blOff].D = true;
+                        DataCache.DataStructs[blOff].V = true;
                     }
                 }
-            //}*/
+            }
+               
             occupied = false;
         }
     }
