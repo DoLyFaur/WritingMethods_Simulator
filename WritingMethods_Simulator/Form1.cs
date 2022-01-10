@@ -42,7 +42,7 @@ namespace WritingMethods_Simulator
 
         private void FRcombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (IBScombobox.SelectedIndex == 0)
+            if (FRcombobox.SelectedIndex == 0)
             {
                 IBScombobox.Items.Clear();
                 IBScombobox.Items.AddRange(new object[]
@@ -142,7 +142,8 @@ namespace WritingMethods_Simulator
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog
             {
-                InitialDirectory = @"C:\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug",
+                InitialDirectory = @"C:\Users\User\Fac\IV.1\Sim_optim_arh_calc\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug",
+                //@"C:\Desktop\Proiect_SOAC-variante\WritingMethods_Simulator\WritingMethods_Simulator\bin\Debug",
                 Title = "Browse Trace",
                 CheckFileExists = true,
                 CheckPathExists = true,
